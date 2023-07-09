@@ -3,6 +3,7 @@
 <head>
     <link href="style.css" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="script.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,12 +16,14 @@
     <main>
         <div class="content">
             <section class="description">
+                <h2>Описание задачи</h2>
                 <p>У нас есть три сундука, в каждом из которых лежит по две монетки 
                 (в первом — две золотые, во втором — одна золотая и одна серебряная, в третьем — две серебряные).</p>
                 <p>Мы выбираем один из этих сундуков случайным образом и вслепую вытаскиваем одну из монеток. Она оказывается золотой.</p>
                 <p>Какова вероятность того, что вторая монетка в этом сундуке — тоже золотая?</p>
             </section>
             <section class="solution">
+                <h2>Решение задачи</h2>
                 <p>Парадокс заключается в следующем: после выбора случайной коробки и случайной монеты из нее, выбранная монета оказалась золотой.</p>
                 <p>Какова вероятность того, что вторая монета в выбранной коробке также золотая?</p>
                 <p>Может показаться, что такая вероятность равна 1/2, но на самом деле ответ — 2/3. Дело в том, что если выбрана золотая монета,
@@ -28,7 +31,9 @@
                 <p>Покажем это на графике, где будет показана такая же ситуация 100 раз. Так увидим, куда стремится математическое ожидание.</p>
             </section>
             <section class="graph">
-                
+                <h2>Решение задачи при помощи графика</h2>
+                <div id="columnchart_material" style="width: 800px; height: 500px;"></div>
+
             </section>
         </div>
     </main>
