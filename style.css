@@ -20,6 +20,12 @@ body{
 main{
     flex:10;
 }
+.graph, .code ,.reasoning {
+    display: none;
+}
+.content .visiable{
+    display: block;
+}
 .content{
     display: flex;
     flex-flow: row wrap;
@@ -27,7 +33,26 @@ main{
 margin: 0 30px;
 
    }
+   .choosing{
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    margin:20px 0;
+   }
 
+   .chossing_item{
+    width: 200px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 40px 10px;
+    border: 1px solid rgba(212,231,244,255);
+    cursor: pointer;
+    margin: auto;
+   }
+   .chossing_item.active{
+    border-bottom: 3px solid rgb(66, 133, 244);
+   }
 
    footer{
     flex:1;
