@@ -1,45 +1,51 @@
 $(window).on('load', function() {
 
+  // Инициализация
     var count = 10;
-    const chests = [[1, 1], [1, 0], [0,0]];
-
+    var chests = [[1, 1], [1, 0], [0,0]];
+    var init = 3;
+    let win, change = 0;
     var dataRows = [
       ['trying', 'probability']
     ];
 
 
-    var newChest = chests;
+    for(let j=0; j<chests.length; j++){
+      shuffle(chests[j]);
+    }
 
 
-    for(var i =1; i<count+1; i){
+    for(var i =1; i<count+1; i++){
       shuffle(chests);
-      console.log("chests");
-      console.log(chests);
+      win = 0;
 
-      console.log("i");
-      console.log(i);
+      for(var k =0; k<init; k){
 
       if(chests[0][0] == 1){
-        
+        k++;
         if(chests[0][1] == 1){
-          dataRows[i] = [i, 1];
-        }else{
-          dataRows[i] = [i, 0];
+          win++;
         }
-        i++;
       }else{
         shuffle(chests);
       }
+      }
+
+      change = win/init*100;
+      dataRows[i] = [i, change];
+
       console.log("dataRow");
       console.log(dataRows);
     }
 
     
 
-
+    //Перемешивание
     function shuffle(array) {
       array.sort(() => Math.random() - 0.5);
     }
+
+    //Отрисовка
     setInterval(function(){
 
     
@@ -55,12 +61,10 @@ google.charts.load('current', {'packages':['bar']});
             subtitle: 'trying, probability',
           }
         };
-
         var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
-
         chart.draw(data, google.charts.Bar.convertOptions(options));
       }
-    }, 1000);
+    }, 1000000);
     });
 
     
