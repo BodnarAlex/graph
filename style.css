@@ -1,0 +1,54 @@
+body{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+header{
+    flex:1;
+}
+html{
+    background-image: url(img/notebook.avif)
+}
+body{
+    background-color: white;
+}
+main{
+    flex:10;
+}
+.content{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+margin: 0 30px;
+
+   }
+
+
+   footer{
+    flex:1;
+}
+.image_github{
+    width: 40px;
+    height: 40px;
+    background-image: url(img/github.svg);
+    background-position: center left;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+footer, .footer_github {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}
+.contact__content.footer_content, .footer_github{
+    align-self: center;
+}
+.year_create{
+    align-self: center;
+    justify-self: center;
+}
