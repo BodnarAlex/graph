@@ -1,16 +1,17 @@
 $(window).on('load', function() {
 
-    var count = 100;
+    var count = 10;
     const chests = [[1, 1], [1, 0], [0,0]];
 
     var dataRows = [
       ['trying', 'probability']
     ];
 
+
     var newChest = chests;
 
 
-    for(var i =1; i<count+1; i++){
+    for(var i =1; i<count+1; i){
       shuffle(chests);
       console.log("chests");
       console.log(chests);
@@ -19,11 +20,15 @@ $(window).on('load', function() {
       console.log(i);
 
       if(chests[0][0] == 1){
+        
         if(chests[0][1] == 1){
           dataRows[i] = [i, 1];
         }else{
           dataRows[i] = [i, 0];
         }
+        i++;
+      }else{
+        shuffle(chests);
       }
       console.log("dataRow");
       console.log(dataRows);
