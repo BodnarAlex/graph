@@ -9,25 +9,19 @@ $(document).ready(function () {
     ['trying', 'probability']
   ];
 
-
-  for (let j = 0; j < chests.length; j++) {
-    shuffle(chests[j]);
-  }
-
-
   for (var i = 1; i < count + 1; i++) {
     shuffle(chests);
+    shuffleEntrails(chests);
     win = 0;
 
     for (var k = 0; k < init; k) {
-
+      shuffle(chests);
+      shuffleEntrails(chests);
       if (chests[0][0] == 1) {
         k++;
         if (chests[0][1] == 1) {
           win++;
         }
-      } else {
-        shuffle(chests);
       }
     }
 
@@ -64,5 +58,11 @@ function drawGraph(dataRows){
   //Перемешивание
   function shuffle(array) {
     array.sort(() => Math.random() - 0.5);
+  }
+
+  function shuffleEntrails(array){
+    for (let j = 0; j < array.length; j++) {
+      shuffle(array[j]);
+    }
   }
 
