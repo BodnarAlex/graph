@@ -35,8 +35,30 @@ $(document).ready(function () {
   commonChange = commonWin/(init*count)*100;
   commonChange=commonChange.toFixed(2)
   drawGraph(dataRows);
-});
 
+  $(".chossing_item").on('click', function(){
+    let classList = this.classList;
+  
+    if(classList.length==2){
+      switch(classList[1]){
+        case "choose_graph":
+          $(".visiable").removeClass("visiable");
+          $(".graph").addClass("visiable");
+          break;
+        case "choose_code":
+          $(".visiable").removeClass("visiable");
+          $(".code").addClass("visiable");
+          break;
+        case "choose_reasoning":
+          $(".visiable").removeClass("visiable");
+          $(".reasoning").addClass("visiable");
+          break;     
+      }
+      $(".active").removeClass("active");
+      $(this).addClass("active");
+    }
+  });
+});
 
   //Отрисовка
 function drawGraph(dataRows){
@@ -67,4 +89,3 @@ function drawGraph(dataRows){
       shuffle(array[j]);
     }
   }
-
