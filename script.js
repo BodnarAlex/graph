@@ -1,66 +1,91 @@
-$(window).on('load', function() {
+$(document).ready(function () {    
 
-    var count = 10;
-    const chests = [[1, 1], [1, 0], [0,0]];
+  // Инициализация
+  var count = 100;
+  var chests = [[1, 1], [1, 0], [0, 0]];
+  var init = 3;
+  let win, change, commonChange = 0;
+  let commonWin= 0;
+  
+  var dataRows = [
+    ['trying', 'probability']
+  ];
+  
+  for (var i = 1; i < count + 1; i++) {
+    shuffle(chests);
+    shuffleEntrails(chests);
+    win = 0;
 
-    var dataRows = [
-      ['trying', 'probability']
-    ];
-
-
-    var newChest = chests;
-
-
-    for(var i =1; i<count+1; i){
+    for (var k = 0; k < init; k) {
       shuffle(chests);
-      console.log("chests");
-      console.log(chests);
-
-      console.log("i");
-      console.log(i);
-
-      if(chests[0][0] == 1){
-        
-        if(chests[0][1] == 1){
-          dataRows[i] = [i, 1];
-        }else{
-          dataRows[i] = [i, 0];
+      shuffleEntrails(chests);
+      if (chests[0][0] == 1) {
+        k++;
+        commonChange++;
+        if (chests[0][1] == 1) {
+          win++;
+          commonWin++;
         }
-        i++;
-      }else{
-        shuffle(chests);
       }
-      console.log("dataRow");
-      console.log(dataRows);
     }
+    change = win / init * 100;
+    dataRows[i] = [i, change];
+  }
 
-    
+  commonChange = commonWin/(init*count)*100;
+  commonChange=commonChange.toFixed(2)
+  drawGraph(dataRows);
 
-
-    function shuffle(array) {
-      array.sort(() => Math.random() - 0.5);
-    }
-    setInterval(function(){
-
-    
-google.charts.load('current', {'packages':['bar']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable(dataRows);
-
-        var options = {
-          chart: {
-            title: 'Solution Graph',
-            subtitle: 'trying, probability',
-          }
-        };
-
-        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
-
-        chart.draw(data, google.charts.Bar.convertOptions(options));
+  $(".chossing_item").on('click', function(){
+    let classList = this.classList;
+  
+    if(classList.length==2){
+      switch(classList[1]){
+        case "choose_graph":
+          $(".visiable").removeClass("visiable");
+          $(".graph").addClass("visiable");
+          break;
+        case "choose_code":
+          $(".visiable").removeClass("visiable");
+          $(".code").addClass("visiable");
+          break;
+        case "choose_reasoning":
+          $(".visiable").removeClass("visiable");
+          $(".reasoning").addClass("visiable");
+          break;     
       }
-    }, 1000);
-    });
+      $(".active").removeClass("active");
+      $(this).addClass("active");
+    }
+  });
+});
 
-    
+  //Отрисовка
+function drawGraph(dataRows){
+  google.charts.load('current', { 'packages': ['bar'] });
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable(dataRows);
+
+    var options = {
+      chart: {
+        title: 'Solution Graph',
+        subtitle: 'trying, probability',
+      }
+    };
+    var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+    chart.draw(data, google.charts.Bar.convertOptions(options));
+  }
+}
+
+  //Перемешивание
+  function shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
+  }
+
+  function shuffleEntrails(array){
+    for (let j = 0; j < array.length; j++) {
+      shuffle(array[j]);
+    }
+  }
