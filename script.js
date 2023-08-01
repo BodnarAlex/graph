@@ -33,7 +33,7 @@ $(document).ready(function () {
   }
 
   commonChange = commonWin/(init*count)*100;
-  commonChange=commonChange.toFixed(2)
+  commonChange=commonChange.toFixed(2);
   drawGraph(dataRows);
 
   $(".chossing_item").on('click', function(){
@@ -57,6 +57,25 @@ $(document).ready(function () {
       $(".active").removeClass("active");
       $(this).addClass("active");
     }
+  });
+
+  $("form").submit(function (event) {
+    var formData = {
+      quantity: $("#quantity").val(),
+      count: $("#count").val(),
+    };
+
+    $.ajax({
+      type: "POST",
+      url: "process.php",
+      data: formData,
+      dataType: "json",
+      encode: true,
+    }).done(function (data) {
+      console.log(data);
+    });
+
+    event.preventDefault();
   });
 });
 
