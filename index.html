@@ -37,8 +37,19 @@
             </div>
             <section class="graph visiable">
                 <h2>Решение задачи при помощи графика</h2>
-                <div>Средняя вероятность:<div id="probability">66</div></div>
-                <div id="columnchart_material" style="width: 800px; height: 500px;"></div>
+                <div class="graph_flex">
+                    <div id="columnchart_material"></div>
+                    <div class="graph_form">
+                        <form id="new_data" action="ajaxForm">
+                            <h3>Средняя вероятность:<div id="probability">66</div></h3>
+                            <label for="init">Сколько раз нужно перепроверить?</label>
+                            <input type="text" name="init" id="init" value="3">
+                            <label for="count">Сколько раз это повториться?</label>
+                            <input type="text" name="count" id="init" value="100">
+                            <button>Пересчитать</button>
+                        </form>
+                    </div>
+                </div>      
             </section>
             <section class="code">
                 <h2>Демонстрация кода</h2>

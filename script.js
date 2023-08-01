@@ -70,8 +70,6 @@ function drawGraph(dataRows){
 
     var options = {
       chart: {
-        title: 'Solution Graph',
-        subtitle: 'trying, probability',
       }
     };
     var chart = new google.charts.Bar(document.getElementById('columnchart_material'));

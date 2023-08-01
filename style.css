@@ -54,6 +54,29 @@ margin: 0 30px;
     border-bottom: 3px solid rgb(66, 133, 244);
    }
 
+   .graph_flex{
+    display: flex;
+    flex-flow: row wrap;
+   }
+   .graph_form{
+    width: 200px;
+    margin: 130px 0 50px;
+   }
+   .graph_form button, .graph_form input{
+    padding: 10px 8px;
+    background-color: rgba(212,231,244,255);
+    border: 2px solid rgb(66, 133, 244);
+    border-radius: 5px;
+   }
+   .graph_form input{
+    margin: 10px 0 20px;
+    border: 1px solid rgb(66, 133, 150);
+   }
+   
+   #columnchart_material{
+    width: 800px;
+     height: 500px;
+   }
    footer{
     flex:1;
 }
