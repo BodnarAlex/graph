@@ -40,12 +40,12 @@
                 <div class="graph_flex">
                     <div id="columnchart_material"></div>
                     <div class="graph_form">
-                        <form id="new_data" action="ajaxForm">
+                        <form id="new_data" action="process.php" method="POST">
                             <h3>Средняя вероятность:<div id="probability">66</div></h3>
-                            <label for="init">Сколько раз нужно перепроверить?</label>
-                            <input type="text" name="init" id="init" value="3">
-                            <label for="count">Сколько раз это повториться?</label>
-                            <input type="text" name="count" id="init" value="100">
+                            <label for="count">Сколько раз нужно перепроверить?</label>
+                            <input type="text" name="count" id="count" value="3">
+                            <label for="quantity">Сколько раз это повториться?</label>
+                            <input type="text" name="quantity" id="quantity" value="100">
                             <button>Пересчитать</button>
                         </form>
                     </div>
