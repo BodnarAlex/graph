@@ -1,3 +1,4 @@
+<?
 if(isset($_POST["quantity"]) || isset($_POST["count"])) {
 $quantity="";
 $count="";
