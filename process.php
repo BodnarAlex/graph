@@ -7,5 +7,7 @@ if(isset($_POST['count'])){$count=$_POST['count']}
 
 echo $quantity."<br>";
 echo $count;
+return true;
 }
+return true;
 ?>
