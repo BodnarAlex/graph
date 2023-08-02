@@ -60,19 +60,18 @@ $(document).ready(function () {
   });
 
   $("form").submit(function (event) {
-    var formData = {
-      quantity: $("#quantity").val(),
-      count: $("#count").val(),
-    };
+    // var formData = {
+    //   quantity: $("#quantity").val(),
+    //   count: $("#count").val(),
+    // };
 
     $.ajax({
       type: "POST",
       url: "process.php",
-      data: formData,
-      dataType: "json",
+      data: $('form').serialize(),
       encode: true,
-    }).done(function (data) {
-      console.log(data);
+    }).done(function () {
+      console.log("OK");
     });
 
     event.preventDefault();
