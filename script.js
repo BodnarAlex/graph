@@ -7,8 +7,7 @@ $(document).ready(function () {
   var data = getData(init, count);
   commonChange = data[1]/(init*count)*100;
   commonChange = commonChange.toFixed(2);
-  $('#probability').html(commonChange);
-  console.log(commonChange);
+  $('#probability').html(commonChange + '%');
   drawGraph(data[0]);
 
   $(".chossing_item").on('click', function(){
