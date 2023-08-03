@@ -69,13 +69,24 @@ $(document).ready(function () {
       type: "POST",
       url: "process.php",
       data: $('form').serialize(),
-      encode: true,
-    }).done(function () {
-      console.log("OK");
+      dataType: 'text',
+    })
+    .done( function (responseText) {
+       // Triggered if response status code is 200 (OK)
+       $('#message').html('Your message is: ' + responseText);
+    })
+    .fail( function (jqXHR, status, error) {
+       // Triggered if response status code is NOT 200 (OK)
+       alert(jqXHR.responseText);
+       alert(error);
+       console.log(jqXHR);
+    })
+    .always( function() {
+       // Always run after .done() or .fail()
+       $('p:first').after('<p>Thank you.</p>');
     });
-
     event.preventDefault();
-  });
+});
 });
 
   //Отрисовка
