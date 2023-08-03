@@ -1,40 +1,15 @@
+    // Инициализация
+    var count = 100;
+    var chests = [[1, 1], [1, 0], [0, 0]];
+    var init = 3;
+  
 $(document).ready(function () {    
-
-  // Инициализация
-  var count = 100;
-  var chests = [[1, 1], [1, 0], [0, 0]];
-  var init = 3;
-  let win, change, commonChange = 0;
-  let commonWin= 0;
-  
-  var dataRows = [
-    ['trying', 'probability']
-  ];
-  
-  for (var i = 1; i < count + 1; i++) {
-    shuffle(chests);
-    shuffleEntrails(chests);
-    win = 0;
-
-    for (var k = 0; k < init; k) {
-      shuffle(chests);
-      shuffleEntrails(chests);
-      if (chests[0][0] == 1) {
-        k++;
-        commonChange++;
-        if (chests[0][1] == 1) {
-          win++;
-          commonWin++;
-        }
-      }
-    }
-    change = win / init * 100;
-    dataRows[i] = [i, change];
-  }
-
-  commonChange = commonWin/(init*count)*100;
-  commonChange=commonChange.toFixed(2);
-  drawGraph(dataRows);
+  var data = getData(init, count);
+  commonChange = data[1]/(init*count)*100;
+  commonChange = commonChange.toFixed(2);
+  $('#probability').html(commonChange);
+  console.log(commonChange);
+  drawGraph(data[0]);
 
   $(".chossing_item").on('click', function(){
     let classList = this.classList;
@@ -60,34 +35,9 @@ $(document).ready(function () {
   });
 
   $("form").submit(function (event) {
-    // var formData = {
-    //   quantity: $("#quantity").val(),
-    //   count: $("#count").val(),
-    // };
-
-    $.ajax({
-      type: "POST",
-      url: "process.php",
-      data: $('form').serialize(),
-      dataType: 'text',
-    })
-    .done( function (responseText) {
-       // Triggered if response status code is 200 (OK)
-       $('#message').html('Your message is: ' + responseText);
-    })
-    .fail( function (jqXHR, status, error) {
-       // Triggered if response status code is NOT 200 (OK)
-       alert(jqXHR.responseText);
-       alert(error);
-       console.log(jqXHR);
-    })
-    .always( function() {
-       // Always run after .done() or .fail()
-       $('p:first').after('<p>Thank you.</p>');
-    });
-    event.preventDefault();
-});
-});
+    alert('OK')
+  });
+}); 
 
   //Отрисовка
 function drawGraph(dataRows){
@@ -118,3 +68,34 @@ function drawGraph(dataRows){
       shuffle(array[j]);
     }
   }
+
+  function getData(init, count){
+    let win, change, commonChange = 0;
+    let commonWin= 0;
+    
+    var dataRows = [
+      ['trying', 'probability']
+    ];
+    
+    for (var i = 1; i < count + 1; i++) {
+      shuffle(chests);
+      shuffleEntrails(chests);
+      win = 0;
+  
+      for (var k = 0; k < init; k) {
+        shuffle(chests);
+        shuffleEntrails(chests);
+        if (chests[0][0] == 1) {
+          k++;
+          commonChange++;
+          if (chests[0][1] == 1) {
+            win++;
+            commonWin++;
+          }
+        }
+      }
+      change = win / init * 100;
+      dataRows[i] = [i, change];
+    }
+    return [dataRows, commonWin];
+    }
