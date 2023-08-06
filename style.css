@@ -100,3 +100,24 @@ footer, .footer_github {
     align-self: center;
     justify-self: center;
 }
+code{
+    color:dodgerblue;
+}
+.color_green{
+    color: rgb(109, 156, 39);
+}
+.color_blue{
+    color: royalblue;
+}
+.color_yellow{
+    color:darkgoldenrod;
+}
+.color_orange{
+    color:chocolate;
+}
+.color_violet{
+    color:blueviolet;
+}
+.color_number{
+    color:darkolivegreen;
+}
