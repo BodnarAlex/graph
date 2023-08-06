@@ -121,3 +121,44 @@ code{
 .color_number{
     color:darkolivegreen;
 }
+.chests, .all_chests{
+    display: flex;
+    flex-flow: row nowrap;
+    margin: 0 auto;
+    justify-content: space-between;
+    list-style-type:none;
+    margin: 10px 0;
+}
+.chest, .all_chests .chest{
+    width: 250px !important;
+    height: 210px;
+    background-image: url(img/chest.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 250px 250px;
+    display: flex;
+    flex-flow: row nowrap;
+    width: 70%;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+}
+.item{
+    width: 72px;
+    height: 37px;
+}
+.gold{
+    background-image: url(img/gold.png);
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 70px 70px;
+    margin-top: 40px;
+}
+.silver{
+    background-image: url(img/silver.png);
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: 70px 70px;
+    margin-top: 40px;
+    border-image-slice: 10%;
+}
