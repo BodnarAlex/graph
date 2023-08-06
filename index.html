@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <link href="assets/style.css" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="assets/script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>График Google</title>
+</head>
+<body>
+  <header>
+    <h1>Парадокс коробок Бертрана</h1>
+  </header>
+  <main>
+    <div class="content">
+      <section class="description">
+        <h2>Описание задачи</h2>
+        <p>У нас есть три сундука, в каждом из которых лежит по две монетки
+          (в первом — две золотые, во втором — одна золотая и одна серебряная, в третьем — две серебряные).</p>
+        <p>Мы выбираем один из этих сундуков случайным образом и вслепую вытаскиваем одну из монеток. Она оказывается
+          золотой.</p>
+        <p>Какова вероятность того, что вторая монетка в этом сундуке — тоже золотая?</p>
+      </section>
+      <section class="solution">
+        <h2>Решение задачи</h2>
+        <p>Парадокс заключается в следующем: после выбора случайной коробки и случайной монеты из нее, выбранная монета
+          оказалась золотой.</p>
+        <p>Какова вероятность того, что вторая монета в выбранной коробке также золотая?</p>
+        <p>Может показаться, что такая вероятность равна 1/2, но на самом деле ответ — 2/3. Дело в том, что если выбрана
+          золотая монета,
+          то вероятность того, что она в коробке номер 1 — 2/3, так как в ней 2 золотых монеты, а всего золотых — три.
+        </p>
+        <p>Покажем это на графике, где будет показана такая же ситуация 100 раз. Так увидим, куда стремится
+          математическое ожидание.</p>
+      </section>
+      <div class="choosing">
+        <div class="chossing_item choose_graph active">Решение задачи при помощи графика</div>
+        <div class="chossing_item choose_code">Демонстрация кода</div>
+        <div class="chossing_item choose_reasoning">Обсудим подробнее</div>
+      </div>
+      <section class="graph visiable">
+        <h2>Решение задачи при помощи графика</h2>
+        <div class="graph_flex">
+          <div id="columnchart_material"></div>
+          <div class="graph_form">
+            <form id="new_data">
+              <div class="probability_text">
+                Средняя вероятность:
+                <div id="probability">
+                  66
+                </div>
+              </div>
+              <label for="count_init">Сколько раз нужно перепроверить?</label>
+              <input type="text" name="count_init" id="count_init" value="3">
+              <label for="quantity">Сколько раз это повториться?</label>
+              <input type="text" name="quantity" id="quantity" value="100">
+              <button type=button>Пересчитать</button>
+            </form>
+          </div>
+        </div>
+      </section>
+      <section class="code">
+        <h2>Демонстрация кода</h2>
+        <pre>
+          <code>
+            <span class="color_green">// Инициализация</span>
+            <span class="color_blue">var</span> count = <span class="color_number">100</span>;
+            <span class="color_blue">var</span> chests = [[<span class="color_number">1, 1</span>], [<span class="color_number">1, 0</span>], [<span class="color_number">0, 0</span>]];
+            <span class="color_blue">var</span> init = <span class="color_number">3</span>;
+            <span class="color_blue">let</span> win, change, commonChange = <span class="color_number">0</span>;
+            <span class="color_blue">let</span> commonWin= <span class="color_number">0</span>;
+            
+            <span class="color_blue">var</span> dataRows = [
+              [<span class="color_orange">'trying'</span>, <span class="color_orange">'probability'</span>]
+            ];
+            
+            <span class="color_violet">for (</span><span class="color_blue">var</span> i = <span class="color_number">1</span>; i &lt;= count; i++<span class="color_violet">) {</span>
+              <span class="color_yellow">shuffle</span>(chests);
+              <span class="color_yellow">shuffleEntrails</span>(chests);
+              win = <span class="color_number">0</span>;
+          
+              <span class="color_violet">for (</span>var k = <span class="color_number">0</span>; k &lt; init; k<span class="color_violet">) {</span>
+                  <span class="color_yellow">shuffle</span>(chests);
+                  <span class="color_yellow">shuffleEntrails</span>(chests);
+                  <span class="color_violet">if (</span>chests[<span class="color_number">0</span>][<span class="color_number">0</span>] == <span class="color_number">1</span><span class="color_violet">) {</span>
+                  k++;
+                  commonChange++;
+                  <span class="color_violet">if (</span>chests[<span class="color_number">0</span>][<span class="color_number">1</span>] == <span class="color_number">1</span><span class="color_violet">) {</span>
+                    win++;
+                    commonWin++;
+                    <span class="color_violet">}</span>
+                  <span class="color_violet">}</span>
+                  <span class="color_violet">}</span>
+              change = win / init * <span class="color_number">100</span>;
+              dataRows[i] = [i, change];
+              <span class="color_violet">}</span>
+          
+            commonChange = commonWin / (init * count) * <span class="color_number">100</span>.<span class="color_yellow">toFixed(</span><span class="color_number">2</span><span class="color_yellow">)</span>
+            <span class="color_yellow">drawGraph</span>(dataRows);
+        
+            <span class="color_green">//Отрисовка</span>
+            <span class="color_blue">function</span> <span class="color_yellow">drawGraph</span>(dataRows){
+            google.charts.<span class="color_yellow">load</span>(<span class="color_orange">'current'</span>, { <span class="color_orange">'packages'</span>: [<span class="color_orange">'bar'</span>] });
+            google.charts.<span class="color_yellow">setOnLoadCallback</span>(<span class="color_yellow">drawChart</span>);
+          
+            <span class="color_blue">function</span> <span class="color_yellow">drawChart</span><span class="color_violet">() {</span>
+              <span class="color_blue">var</span> data = google.visualization.<span class="color_yellow">arrayToDataTable</span>(dataRows);
+          
+              <span class="color_blue">var</span> options = {
+                chart: {
+                  title: <span class="color_orange">'Solution Graph'</span>,
+                  subtitle: <span class="color_orange">'trying, probability'</span>,
+                }
+              };
+              <span class="color_blue">var</span> chart = <span class="color_blue">new</span> google.charts.<span class="color_yellow">Bar</span>(document.<span class="color_yellow">getElementById</span>(<span class="color_orange">'columnchart_material'</span>));
+              chart.<span class="color_yellow">draw</span>(data, google.charts.Bar.<span class="color_yellow">convertOptions</span>(options));
+            }
+          }
+          
+          <span class="color_green">//Перемешивание</span>
+            <span class="color_blue">function</span> <span class="color_yellow">shuffle</span>(array) {
+              array.<span class="color_yellow">sort</span>(() =&gt;Math.<span class="color_yellow">random</span>() - <span class="color_number">0.5</span>);
+            }
+          
+            <span class="color_blue">function</span> <span class="color_yellow">shuffleEntrails</span>(array){
+              <span class="color_violet">for (</span><span class="color_blue">let</span> j = <span class="color_number">0</span>; j &lt; array.<span class="color_yellow">length</span>; j++<span class="color_violet">) {</span>
+                <span class="color_yellow">shuffle</span>(array[j]);
+                <span class="color_violet">}</span>
+            }
+          </code>
+        </pre>
+      </section>
+      <section class="reasoning">
+        <h2>Обсудим подробнее:</h2>
+        <div>
+          Мы понимаем, что нет никакого вероятного исхода задействовать сундук с двумя серебрянными монетами.
+          Это означает, что можем рассматривать примеры сразу только с двумя сундуками. Где есть две золотые монеты и
+          где они разные.
+        </div>
+        <div class="chests">
+          <div class="chest">
+            <div class="item gold"></div>
+            <div class="item silver"></div>
+          </div>
+          <div class="chest">
+            <div class="item gold"></div>
+            <div class="item gold"></div>
+          </div>
+        </div>
+        <div>
+          <p>Рассмотрим все возможности:</p>
+        </div>
+        <ol>
+          <li>Допустим, что это сундук с разными монетами, значит - вторая монета серебрянная.</li>
+          <li>Допустим, что это сундук с золотыми монетами, значит - вторая монета золотая.</li>
+          <li>Здесь хочется остановиться, и посчитать, что шанс 50/50, где возможно вытащить либо серебрянную монету,
+            либо золотую. Однако, должны рассмотреть, что мы можем вытащить другую золотую монету из сундука с сзолотом.
+            Что приводдит нас к мысли, что вероятных исхода три.
+          </li>
+        </ol>
+        <p>Продемонстрируем:</p>
+
+        <ul class="all_chests">
+          <li>
+            <div class="chest">
+              <div class="item"></div>
+              <div class="item silver"></div>
+            </div>
+          </li>
+          <li>
+            <div class="chest">
+              <div class="item"></div>
+              <div class="item gold"></div>
+            </div>
+          </li>
+          <li>
+            <div class="chest">
+              <div class="item gold"></div>
+              <div class="item"></div>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </main>
+  <footer>
+    <div class="footer_github">
+
+      <div class="contact__content footer_content">
+        <a href="https://github.com/BodnarAlex">
+          <div class="image footer_image image_github"></div>
+        </a>
+      </div>
+    </div>
+    <div class="year_create">
+      <p>&copy; 2023 by Aleksandra Bodnar</p>
+    </div>
+    <div></div>
+  </footer>
+</body>
+</html>
