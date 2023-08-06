@@ -5,8 +5,7 @@
   
 $(document).ready(function () {    
   var data = getData(init, count);
-  commonChange = data[1]/(init*count)*100;
-  commonChange = commonChange.toFixed(2);
+  commonChange = (data[1]/(init*count)*100).toFixed(2);
   $('#probability').html(commonChange + '%');
   drawGraph(data[0]);
 
@@ -33,8 +32,13 @@ $(document).ready(function () {
     }
   });
 
-  $("form").submit(function (event) {
-    alert('OK')
+  $("button").on('click', function(){
+    init = $("#count_init").val();
+    count = $("#quantity").val();
+    data = getData(init, count);
+    commonChange = (data[1]/(init*count)*100).toFixed(2);
+    $('#probability').html(commonChange + '%');
+    drawGraph(data[0]);
   });
 }); 
 
@@ -76,7 +80,7 @@ function drawGraph(dataRows){
       ['trying', 'probability']
     ];
     
-    for (var i = 1; i < count + 1; i++) {
+    for (var i = 1; i < count; i++) {
       shuffle(chests);
       shuffleEntrails(chests);
       win = 0;
