@@ -116,6 +116,12 @@ main {
     border: 1px solid rgb(66, 133, 150);
 }
 
+.probability_text{
+    font-weight: bold;
+    font-size: 1.17em;
+    margin-bottom: 15px;
+}
+
 #columnchart_material {
     width: 800px;
     height: 500px;
