@@ -80,7 +80,7 @@ function drawGraph(dataRows){
       ['trying', 'probability']
     ];
     
-    for (var i = 1; i < count; i++) {
+    for (var i = 1; i <= count; i++) {
       shuffle(chests);
       shuffleEntrails(chests);
       win = 0;
