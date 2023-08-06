@@ -1,4 +1,32 @@
-body{
+code {
+    color: dodgerblue;
+}
+
+.color_green {
+    color: rgb(109, 156, 39);
+}
+
+.color_blue {
+    color: royalblue;
+}
+
+.color_yellow {
+    color: darkgoldenrod;
+}
+
+.color_orange {
+    color: chocolate;
+}
+
+.color_violet {
+    color: blueviolet;
+}
+
+.color_number {
+    color: darkolivegreen;
+}
+
+body {
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;
@@ -8,128 +36,103 @@ body{
     max-width: 1200px;
     margin: 0 auto;
 }
-header{
-    flex:1;
+
+header {
+    flex: 1;
 }
-html{
+
+html {
     background-image: url(img/notebook.avif)
 }
-body{
+
+body {
     background-color: white;
 }
-main{
-    flex:10;
+
+main {
+    flex: 10;
 }
-.graph, .code ,.reasoning {
+
+.graph,
+.code,
+.reasoning {
     display: none;
 }
-.content .visiable{
+
+.content .visiable {
     display: block;
 }
-.content{
+
+.content {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
-margin: 0 30px;
+    margin: 0 30px;
 
-   }
-   .choosing{
+}
+
+.choosing {
     width: 100%;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-around;
-    margin:20px 0;
-   }
+    margin: 20px 0;
+}
 
-   .chossing_item{
+.chossing_item {
     width: 200px;
     text-align: center;
     vertical-align: middle;
     padding: 40px 10px;
-    border: 1px solid rgba(212,231,244,255);
+    border: 1px solid rgba(212, 231, 244, 255);
     cursor: pointer;
     margin: auto;
-   }
-   .chossing_item.active{
-    border-bottom: 3px solid rgb(66, 133, 244);
-   }
+}
 
-   .graph_flex{
+.chossing_item.active {
+    border-bottom: 3px solid rgb(66, 133, 244);
+}
+
+.graph_flex {
     display: flex;
     flex-flow: row wrap;
-   }
-   .graph_form{
+}
+
+.graph_form {
     width: 200px;
     margin: 130px 0 50px;
-   }
-   .graph_form button, .graph_form input{
+}
+
+.graph_form button,
+.graph_form input {
     padding: 10px 8px;
-    background-color: rgba(212,231,244,255);
+    background-color: rgba(212, 231, 244, 255);
     border: 2px solid rgb(66, 133, 244);
     border-radius: 5px;
-   }
-   .graph_form input{
+}
+
+.graph_form input {
     margin: 10px 0 20px;
     border: 1px solid rgb(66, 133, 150);
-   }
-   
-   #columnchart_material{
+}
+
+#columnchart_material {
     width: 800px;
-     height: 500px;
-   }
-   footer{
-    flex:1;
+    height: 500px;
 }
-.image_github{
-    width: 40px;
-    height: 40px;
-    background-image: url(img/github.svg);
-    background-position: center left;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-footer, .footer_github {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-around;
-}
-.contact__content.footer_content, .footer_github{
-    align-self: center;
-}
-.year_create{
-    align-self: center;
-    justify-self: center;
-}
-code{
-    color:dodgerblue;
-}
-.color_green{
-    color: rgb(109, 156, 39);
-}
-.color_blue{
-    color: royalblue;
-}
-.color_yellow{
-    color:darkgoldenrod;
-}
-.color_orange{
-    color:chocolate;
-}
-.color_violet{
-    color:blueviolet;
-}
-.color_number{
-    color:darkolivegreen;
-}
-.chests, .all_chests{
+
+.chests,
+.all_chests {
     display: flex;
     flex-flow: row nowrap;
     margin: 0 auto;
     justify-content: space-between;
-    list-style-type:none;
+    list-style-type: none;
     margin: 10px 0;
 }
-.chest, .all_chests .chest{
+
+.chest,
+.all_chests .chest {
     width: 250px !important;
     height: 210px;
     background-image: url(img/chest.png);
@@ -143,22 +146,58 @@ code{
     justify-content: center;
     align-items: center;
 }
-.item{
+
+.item {
     width: 72px;
     height: 37px;
 }
-.gold{
+
+.gold {
     background-image: url(img/gold.png);
     background-repeat: no-repeat;
     background-position: top;
     background-size: 70px 70px;
     margin-top: 40px;
 }
-.silver{
+
+.silver {
     background-image: url(img/silver.png);
     background-repeat: no-repeat;
     background-position: top;
     background-size: 70px 70px;
     margin-top: 40px;
     border-image-slice: 10%;
+}
+
+footer {
+    flex: 1;
+    border-top: 1px solid rgb(66, 133, 244);
+    margin-top: 20px;
+    padding: 5px 0;
+}
+
+.image_github {
+    width: 40px;
+    height: 40px;
+    background-image: url(img/github.svg);
+    background-position: center left;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+footer,
+.footer_github {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}
+
+.contact__content.footer_content,
+.footer_github {
+    align-self: center;
+}
+
+.year_create {
+    align-self: center;
+    justify-self: center;
 }
