@@ -79,7 +79,7 @@
               win = <span class="color_number">0</span>;
           
               <span class="color_violet">for (</span>var k = <span class="color_number">0</span>; k < init; k<span class="color_violet">) {</span>
-                <span class="color_yellow">shuffle</span>(chests);
+                  <span class="color_yellow">shuffle</span>(chests);
                   <span class="color_yellow">shuffleEntrails</span>(chests);
                   <span class="color_violet">if (</span>chests[<span class="color_number">0</span>][<span class="color_number">0</span>] == <span class="color_number">1</span><span class="color_violet">) {</span>
                   k++;
@@ -99,11 +99,11 @@
         
             <span class="color_green">//Отрисовка</span>
             <span class="color_blue">function</span> <span class="color_yellow">drawGraph</span>(dataRows){
-            google.charts.load(<span class="color_orange">'current'</span>, { <span class="color_orange">'packages'</span>: [<span class="color_orange">'bar'</span>] });
-            google.charts.setOnLoadCallback(drawChart);
+            google.charts.<span class="color_yellow">load</span>(<span class="color_orange">'current'</span>, { <span class="color_orange">'packages'</span>: [<span class="color_orange">'bar'</span>] });
+            google.charts.<span class="color_yellow">setOnLoadCallback</span>(<span class="color_yellow">drawChart</span>);
           
-            <span class="color_blue">function</span> drawChart<span class="color_violet">() {</span>
-              <span class="color_blue">var</span> data = google.visualization.arrayToDataTable(dataRows);
+            <span class="color_blue">function</span> <span class="color_yellow">drawChart</span><span class="color_violet">() {</span>
+              <span class="color_blue">var</span> data = google.visualization.<span class="color_yellow">arrayToDataTable</span>(dataRows);
           
               <span class="color_blue">var</span> options = {
                 chart: {
@@ -111,7 +111,7 @@
                   subtitle: <span class="color_orange">'trying, probability'</span>,
                 }
               };
-              <span class="color_blue">var</span> chart = new google.charts.<span class="color_yellow">Bar</span>(document.<span class="color_yellow">getElementById</span>(<span class="color_orange">'columnchart_material'</span>));
+              <span class="color_blue">var</span> chart = <span class="color_blue">new</span> google.charts.<span class="color_yellow">Bar</span>(document.<span class="color_yellow">getElementById</span>(<span class="color_orange">'columnchart_material'</span>));
               chart.<span class="color_yellow">draw</span>(data, google.charts.Bar.<span class="color_yellow">convertOptions</span>(options));
             }
           }
