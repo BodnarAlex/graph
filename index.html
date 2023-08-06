@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <link href="assets/style.css" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
   <script src="assets/script.js"></script>
-  <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>График Google</title>
@@ -46,7 +45,7 @@
         <div class="graph_flex">
           <div id="columnchart_material"></div>
           <div class="graph_form">
-            <form id="new_data" action="">
+            <form id="new_data">
               <h3>Средняя вероятность:<div id="probability">66</div>
               </h3>
               <label for="count_init">Сколько раз нужно перепроверить?</label>
@@ -73,12 +72,12 @@
               [<span class="color_orange">'trying'</span>, <span class="color_orange">'probability'</span>]
             ];
             
-            <span class="color_violet">for (</span><span class="color_blue">var</span> i = <span class="color_number">1</span>; i <= count; i++<span class="color_violet">) {</span>
+            <span class="color_violet">for (</span><span class="color_blue">var</span> i = <span class="color_number">1</span>; i &lt;= count; i++<span class="color_violet">) {</span>
               <span class="color_yellow">shuffle</span>(chests);
               <span class="color_yellow">shuffleEntrails</span>(chests);
               win = <span class="color_number">0</span>;
           
-              <span class="color_violet">for (</span>var k = <span class="color_number">0</span>; k < init; k<span class="color_violet">) {</span>
+              <span class="color_violet">for (</span>var k = <span class="color_number">0</span>; k &lt; init; k<span class="color_violet">) {</span>
                   <span class="color_yellow">shuffle</span>(chests);
                   <span class="color_yellow">shuffleEntrails</span>(chests);
                   <span class="color_violet">if (</span>chests[<span class="color_number">0</span>][<span class="color_number">0</span>] == <span class="color_number">1</span><span class="color_violet">) {</span>
@@ -118,11 +117,11 @@
           
           <span class="color_green">//Перемешивание</span>
             <span class="color_blue">function</span> <span class="color_yellow">shuffle</span>(array) {
-              array.<span class="color_yellow">sort</span>(() => Math.<span class="color_yellow">random</span>() - <span class="color_number">0.5</span>);
+              array.<span class="color_yellow">sort</span>(() =	&gt; Math.<span class="color_yellow">random</span>() - <span class="color_number">0.5</span>);
             }
           
             <span class="color_blue">function</span> <span class="color_yellow">shuffleEntrails</span>(array){
-              <span class="color_violet">for (</span><span class="color_blue">let</span> j = <span class="color_number">0</span>; j < array.<span class="color_yellow">length</span>; j++<span class="color_violet">) {</span>
+              <span class="color_violet">for (</span><span class="color_blue">let</span> j = <span class="color_number">0</span>; j &lt; array.<span class="color_yellow">length</span>; j++<span class="color_violet">) {</span>
                 <span class="color_yellow">shuffle</span>(array[j]);
                 <span class="color_violet">}</span>
             }
@@ -178,7 +177,7 @@
               <div class="item"></div>
             </div>
           </li>
-          </ol>
+        </ul>
       </section>
     </div>
   </main>
